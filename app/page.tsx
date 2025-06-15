@@ -12,21 +12,21 @@ import {
   Languages,
   ShoppingCart,
 } from "lucide-react"
-
+import logo1 from "@/public/logo1.png"
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
+      
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gray-900 rounded-sm flex items-center justify-center">
-                  <Globe className="h-7 w-7 text-white" />
+              <div className="flex items-center space-x-2">
+                <div>
+                  <img src={logo1.src} alt="DeutschTest Logo"/>
                 </div>
                 <div>
-                  <span className="text-2xl font-bold text-gray-900 tracking-tight">DeutschTest</span>
+                  
                   <div className="text-xs text-gray-600 font-medium uppercase tracking-wider">
                     Professional Institute
                   </div>
@@ -98,7 +98,7 @@ export default function HomePage() {
               <Link href="/test">
                 <Button
                   size="lg"
-                  className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-4 text-lg font-medium shadow-lg"
+                  className="bg-gray-600 hover:bg-gray-800 text-white px-10 py-4 text-lg font-medium shadow-lg"
                 >
                   Assessment starten
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -195,7 +195,7 @@ export default function HomePage() {
                 <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-6">
                   <Languages className="h-8 w-8 text-gray-700" />
                 </div>
-                <CardTitle className="text-xl font-bold text-gray-900">Übersetzungsservice</CardTitle>
+                <CardTitle className="text-xl font-bold text-gray-900">Übersetzungs-service</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-center text-gray-600 leading-relaxed">
@@ -222,7 +222,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 " style={{ backgroundColor: '#254D70' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">Vertrauen durch Zahlen</h2>
@@ -253,7 +253,7 @@ export default function HomePage() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Was unsere Partner sagen</h2>
+            <h2 className="text-4xl font-bold text-gray-600 mb-4">Was unsere Partner sagen</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="border border-gray-200 bg-white">
@@ -300,11 +300,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      
       {/* CTA Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 " style={{ backgroundColor: '#254D70' , marginBottom: '50px'}}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Card className="border border-gray-200 shadow-xl bg-white">
+          <Card className="border border-white-200 shadow-white-xl bg-white">
             <CardContent className="p-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight">
                 Bereit für Ihre professionelle Deutschbewertung?
@@ -340,9 +340,17 @@ export default function HomePage() {
           </Card>
         </div>
       </section>
-
+      <section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-600 mb-4">"Lernen ist wie Rudern gegen den Strom. Hört man damit auf, treibt man zurück."
+            </h2>
+          </div>
+          
+        </div>
+      </section>
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-1 md:col-span-2">
@@ -412,7 +420,7 @@ export default function HomePage() {
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <span className="text-gray-400 text-sm">ISO 9001:2015 zertifiziert</span>
-              <span className="text-gray-400 text-sm">DSGVO-konform</span>
+              <span className="text-gray-400 text-sm">El Azzouzi Yassir</span>
             </div>
           </div>
         </div>
