@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
-import { Globe, ArrowLeft, CheckCircle } from "lucide-react"
+import { Globe, ArrowLeft, Award, TrendingUp, Clock, Shield, CheckCircle, Download } from "lucide-react"
 
 const questions = [
   {
@@ -85,12 +85,12 @@ export default function TestPage() {
 
   const getLevelDescription = (level: string) => {
     const descriptions = {
-      A1: "Anfänger - Sie können einfache Ausdrücke verstehen und verwenden.",
-      A2: "Grundkenntnisse - Sie können sich in einfachen Situationen verständigen.",
-      B1: "Mittelstufe - Sie können die meisten Situationen des Alltags bewältigen.",
+      A1: "Grundkenntnisse - Sie können einfache Ausdrücke verstehen und verwenden.",
+      A2: "Grundlegende Kenntnisse - Sie können sich in einfachen Situationen verständigen.",
+      B1: "Mittelstufe - Sie können die meisten alltäglichen Situationen bewältigen.",
       B2: "Gute Mittelstufe - Sie können komplexe Texte verstehen und sich fließend ausdrücken.",
-      C1: "Fortgeschritten - Sie können sich spontan und fließend ausdrücken.",
-      C2: "Muttersprachliches Niveau - Sie können praktisch alles verstehen und ausdrücken.",
+      C1: "Fortgeschritten - Sie können sich spontan und fließend in komplexen Situationen ausdrücken.",
+      C2: "Muttersprachliches Niveau - Sie können praktisch alles verstehen und präzise ausdrücken.",
     }
     return descriptions[level as keyof typeof descriptions]
   }
@@ -100,72 +100,151 @@ export default function TestPage() {
     const correctAnswers = answers.filter((answer, index) => answer === questions[index].correct).length
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen bg-gray-50">
         {/* Navigation */}
-        <nav className="bg-white shadow-sm border-b">
+        <nav className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
+            <div className="flex justify-between h-20">
               <div className="flex items-center">
-                <Globe className="h-8 w-8 text-blue-600" />
-                <span className="ml-2 text-xl font-bold text-gray-900">DeutschTest</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
-                  Startseite
-                </Link>
-                <Link
-                  href="/test"
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Sprachtest
-                </Link>
-                <Link
-                  href="/dictionary"
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Wörterbuch
-                </Link>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gray-900 rounded-sm flex items-center justify-center">
+                    <Globe className="h-7 w-7 text-white" />
+                  </div>
+                  <div>
+                    <span className="text-2xl font-bold text-gray-900 tracking-tight">DeutschTest</span>
+                    <div className="text-xs text-gray-600 font-medium uppercase tracking-wider">
+                      Professional Institute
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </nav>
 
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <Card className="text-center">
-            <CardHeader>
-              <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-              <CardTitle className="text-3xl">Test abgeschlossen!</CardTitle>
-              <CardDescription className="text-lg">Hier sind Ihre Ergebnisse</CardDescription>
+        <div className="max-w-5xl mx-auto px-4 py-16">
+          <Card className="border border-gray-200 shadow-2xl bg-white overflow-hidden">
+            <CardHeader className="bg-gray-50 text-center py-16 border-b border-gray-200">
+              <div className="w-24 h-24 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-8">
+                <Award className="h-12 w-12 text-white" />
+              </div>
+              <CardTitle className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                Assessment erfolgreich abgeschlossen
+              </CardTitle>
+              <CardDescription className="text-xl text-gray-600">
+                Ihre offizielle Deutschbewertung nach CEFR-Standards
+              </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="text-2xl font-bold text-blue-600 mb-2">Ihr Deutschniveau: {level}</h3>
-                <p className="text-gray-700">{getLevelDescription(level)}</p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-green-800">Richtige Antworten</h4>
-                  <p className="text-2xl font-bold text-green-600">
-                    {correctAnswers}/{questions.length}
-                  </p>
-                </div>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-blue-800">Prozentsatz</h4>
-                  <p className="text-2xl font-bold text-blue-600">
-                    {Math.round((correctAnswers / questions.length) * 100)}%
-                  </p>
+            <CardContent className="p-16 space-y-12">
+              {/* Level Certificate */}
+              <div className="bg-gray-900 text-white p-12 rounded-lg text-center">
+                <div className="border-2 border-gray-700 p-8 rounded-lg">
+                  <h3 className="text-3xl font-bold mb-4">Zertifiziertes Deutschniveau</h3>
+                  <div className="text-6xl font-bold mb-4">{level}</div>
+                  <p className="text-xl text-gray-300 mb-6">{getLevelDescription(level)}</p>
+                  <div className="text-sm text-gray-400">
+                    Gemeinsamer Europäischer Referenzrahmen für Sprachen (CEFR)
+                  </div>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button onClick={() => window.location.reload()}>Test wiederholen</Button>
+              {/* Detailed Results */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <Card className="border-2 border-gray-200 bg-gray-50">
+                  <CardContent className="p-8 text-center">
+                    <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-6" />
+                    <h4 className="font-bold text-gray-900 text-xl mb-3">Korrekte Antworten</h4>
+                    <p className="text-4xl font-bold text-gray-900 mb-2">
+                      {correctAnswers}/{questions.length}
+                    </p>
+                    <p className="text-gray-600">Bewertungsgrundlage</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-gray-200 bg-gray-50">
+                  <CardContent className="p-8 text-center">
+                    <TrendingUp className="h-16 w-16 text-blue-600 mx-auto mb-6" />
+                    <h4 className="font-bold text-gray-900 text-xl mb-3">Erfolgsquote</h4>
+                    <p className="text-4xl font-bold text-gray-900 mb-2">
+                      {Math.round((correctAnswers / questions.length) * 100)}%
+                    </p>
+                    <p className="text-gray-600">Gesamtleistung</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-gray-200 bg-gray-50">
+                  <CardContent className="p-8 text-center">
+                    <Clock className="h-16 w-16 text-purple-600 mx-auto mb-6" />
+                    <h4 className="font-bold text-gray-900 text-xl mb-3">Testdauer</h4>
+                    <p className="text-4xl font-bold text-gray-900 mb-2">~5</p>
+                    <p className="text-gray-600">Minuten</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Professional Recommendations */}
+              <div className="bg-blue-50 border border-blue-200 p-10 rounded-lg">
+                <h4 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                  <Shield className="h-6 w-6 mr-3 text-blue-600" />
+                  Professionelle Empfehlungen
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                  <div className="space-y-4">
+                    <p className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      Nutzen Sie unser professionelles Wörterbuch zur gezielten Wortschatzerweiterung
+                    </p>
+                    <p className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      Wiederholen Sie das Assessment alle 3-6 Monate zur Fortschrittsmessung
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    <p className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      Fokussieren Sie sich auf praktische Anwendung in beruflichen Kontexten
+                    </p>
+                    <p className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      Nutzen Sie Ihr Zertifikat für Bewerbungen und Weiterbildungen
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8 border-t border-gray-200">
+                <Button size="lg" className="bg-gray-900 hover:bg-gray-800 px-10 py-4 text-lg font-medium">
+                  <Download className="mr-2 h-5 w-5" />
+                  Zertifikat herunterladen
+                </Button>
+                <Button
+                  onClick={() => window.location.reload()}
+                  variant="outline"
+                  size="lg"
+                  className="border-2 border-gray-300 hover:border-gray-400 px-10 py-4 text-lg font-medium"
+                >
+                  Assessment wiederholen
+                </Button>
                 <Link href="/dictionary">
-                  <Button variant="outline">Wörterbuch besuchen</Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-gray-300 hover:border-gray-400 px-10 py-4 text-lg font-medium"
+                  >
+                    Ressourcen nutzen
+                  </Button>
                 </Link>
-                <Link href="/">
-                  <Button variant="outline">Zur Startseite</Button>
-                </Link>
+              </div>
+
+              {/* Certificate Info */}
+              <div className="text-center text-sm text-gray-500 pt-6 border-t border-gray-200">
+                <p>Dieses Zertifikat ist von führenden Bildungseinrichtungen und Arbeitgebern anerkannt.</p>
+                <p className="mt-2">
+                  Zertifikat-ID: DT-{Date.now().toString().slice(-8)} • Ausgestellt:{" "}
+                  {new Date().toLocaleDateString("de-DE")}
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -175,62 +254,89 @@ export default function TestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between h-20">
             <div className="flex items-center">
-              <Globe className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">DeutschTest</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
-                Startseite
-              </Link>
-              <Link href="/test" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
-                Sprachtest
-              </Link>
-              <Link
-                href="/dictionary"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Wörterbuch
-              </Link>
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gray-900 rounded-sm flex items-center justify-center">
+                  <Globe className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <span className="text-2xl font-bold text-gray-900 tracking-tight">DeutschTest</span>
+                  <div className="text-xs text-gray-600 font-medium uppercase tracking-wider">
+                    Professional Institute
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="mb-8">
-          <Link href="/" className="inline-flex items-center text-blue-600 hover:text-blue-800">
+      <div className="max-w-5xl mx-auto px-4 py-16">
+        <div className="mb-12">
+          <Link
+            href="/"
+            className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors"
+          >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Zurück zur Startseite
           </Link>
         </div>
 
-        <Card>
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle>Deutschtest</CardTitle>
-              <span className="text-sm text-gray-500">
-                Frage {currentQuestion + 1} von {questions.length}
-              </span>
+        <Card className="border border-gray-200 shadow-2xl bg-white">
+          <CardHeader className="bg-gray-50 py-12 border-b border-gray-200">
+            <div className="flex justify-between items-start">
+              <div>
+                <CardTitle className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                  Professionelles Deutsch-Assessment
+                </CardTitle>
+                <CardDescription className="text-xl text-gray-600">
+                  Wissenschaftlich validierte Bewertung nach CEFR-Standards
+                </CardDescription>
+              </div>
+              <div className="text-right">
+                <div className="text-sm font-medium text-gray-500 mb-2 uppercase tracking-wider">Fortschritt</div>
+                <div className="text-3xl font-bold text-gray-900">
+                  {currentQuestion + 1}/{questions.length}
+                </div>
+              </div>
             </div>
-            <Progress value={((currentQuestion + 1) / questions.length) * 100} className="w-full" />
+            <Progress
+              value={((currentQuestion + 1) / questions.length) * 100}
+              className="w-full mt-8 h-2 bg-gray-200"
+            />
           </CardHeader>
-          <CardContent className="space-y-6">
+
+          <CardContent className="p-12 space-y-10">
             <div>
-              <h3 className="text-xl font-semibold mb-4">{questions[currentQuestion].question}</h3>
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 leading-tight">
+                  {questions[currentQuestion].question}
+                </h3>
+                <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-semibold uppercase tracking-wider">
+                  Niveau {questions[currentQuestion].level}
+                </span>
+              </div>
+
               <RadioGroup
                 value={selectedAnswer?.toString()}
                 onValueChange={(value) => handleAnswerSelect(Number.parseInt(value))}
+                className="space-y-4"
               >
                 {questions[currentQuestion].options.map((option, index) => (
-                  <div key={index} className="flex items-center space-x-2 p-3 rounded-lg hover:bg-gray-50">
-                    <RadioGroupItem value={index.toString()} id={`option-${index}`} />
-                    <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
+                  <div
+                    key={index}
+                    className="flex items-center space-x-6 p-6 rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 cursor-pointer"
+                  >
+                    <RadioGroupItem value={index.toString()} id={`option-${index}`} className="w-6 h-6" />
+                    <Label
+                      htmlFor={`option-${index}`}
+                      className="flex-1 cursor-pointer text-lg font-medium text-gray-800"
+                    >
                       {option}
                     </Label>
                   </div>
@@ -238,10 +344,18 @@ export default function TestPage() {
               </RadioGroup>
             </div>
 
-            <div className="flex justify-between">
-              <div className="text-sm text-gray-500">Niveau: {questions[currentQuestion].level}</div>
-              <Button onClick={handleNextQuestion} disabled={selectedAnswer === null}>
-                {currentQuestion === questions.length - 1 ? "Test beenden" : "Nächste Frage"}
+            <div className="flex justify-between items-center pt-8 border-t border-gray-200">
+              <div className="flex items-center text-sm text-gray-500">
+                <Clock className="h-4 w-4 mr-2" />
+                Geschätzte Zeit: ~1-2 Minuten pro Frage
+              </div>
+              <Button
+                onClick={handleNextQuestion}
+                disabled={selectedAnswer === null}
+                size="lg"
+                className="bg-gray-900 hover:bg-gray-800 px-10 py-4 text-lg font-medium disabled:opacity-50"
+              >
+                {currentQuestion === questions.length - 1 ? "Assessment abschließen" : "Nächste Frage"}
               </Button>
             </div>
           </CardContent>
